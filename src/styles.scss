@@ -1,36 +1,35 @@
-// Tailwind directives - MUST be at top
+// 1. Angular Material import FIRST
+@use '@angular/material' as mat;
+
+// 2. Tailwind directives
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
-// Angular Material theming
-@use '@angular/material' as mat;
+// 3. Angular Material v21 theme using mat.theme() mixin
+html {
+  color-scheme: light dark;
+  @include mat.theme((
+    color: (
+      theme-type: light,
+      primary: mat.$magenta-palette,
+      tertiary: mat.$violet-palette,
+    ),
+    typography: Roboto,
+    density: 0
+  ));
+}
 
-// Your selected Magenta/Violet theme
-$life-os-primary: mat.define-palette(mat.$magenta-palette);
-$life-os-accent: mat.define-palette(mat.$violet-palette, A200, A100, A400);
-$life-os-warn: mat.define-palette(mat.$red-palette);
-
-$life-os-theme: mat.define-light-theme((
-  color: (
-    primary: $life-os-primary,
-    accent: $life-os-accent,
-    warn: $life-os-warn,
-  ),
-  typography: mat.define-typography-config(),
-  density: 0,
-));
-
-@include mat.all-component-themes($life-os-theme);
-
-// Global styles
+// 4. Global styles
 html, body { height: 100%; }
 body { 
   margin: 0; 
   font-family: Roboto, "Helvetica Neue", sans-serif;
+  background: var(--mat-sys-surface);
+  color: var(--mat-sys-on-surface);
 }
 
-// Enterprise container
+// 5. Enterprise utility classes
 .container-enterprise {
   @apply max-w-7xl mx-auto px-4 sm:px-6 lg:px-8;
 }
