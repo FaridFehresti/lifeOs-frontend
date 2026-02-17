@@ -1,1 +1,36 @@
-/* You can add global styles to this file, and also import other style files */
+// Tailwind directives - MUST be at top
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+// Angular Material theming
+@use '@angular/material' as mat;
+
+// Your selected Magenta/Violet theme
+$life-os-primary: mat.define-palette(mat.$magenta-palette);
+$life-os-accent: mat.define-palette(mat.$violet-palette, A200, A100, A400);
+$life-os-warn: mat.define-palette(mat.$red-palette);
+
+$life-os-theme: mat.define-light-theme((
+  color: (
+    primary: $life-os-primary,
+    accent: $life-os-accent,
+    warn: $life-os-warn,
+  ),
+  typography: mat.define-typography-config(),
+  density: 0,
+));
+
+@include mat.all-component-themes($life-os-theme);
+
+// Global styles
+html, body { height: 100%; }
+body { 
+  margin: 0; 
+  font-family: Roboto, "Helvetica Neue", sans-serif;
+}
+
+// Enterprise container
+.container-enterprise {
+  @apply max-w-7xl mx-auto px-4 sm:px-6 lg:px-8;
+}
