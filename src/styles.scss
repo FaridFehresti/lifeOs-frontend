@@ -1,27 +1,82 @@
-// 1. Angular Material import FIRST
-@use '@angular/material' as mat;
+/* 1. Angular Material import FIRST */
+@use "@angular/material" as mat;
 
-// 2. Tailwind directives
+/* 2. Include Material core styles ONCE */
+@include mat.core();
+
+/* 3. Tailwind directives */
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
-// 3. Angular Material v21 theme using mat.theme() mixin
-html {
-  color-scheme: light dark;
-  @include mat.theme((
-    color: (
-      theme-type: light,
-      primary: mat.$magenta-palette,
-      tertiary: mat.$violet-palette,
-    ),
-    typography: Roboto,
-    density: 0
+/* 4. Angular Material Theme Tokens (PASTE THEME HERE) */
+:root, :host {
+  @include mat.theme-overrides((
+    primary: #48A111,
+    on-primary: #ffffff,
+    primary-container: #c7efb6,
+    on-primary-container: #0e2b02,
+    inverse-primary: #7fc760,
+    primary-fixed: #c7efb6,
+    primary-fixed-dim: #7fc760,
+    on-primary-fixed: #0e2b02,
+    on-primary-fixed-variant: #2a6909,
+
+    secondary: #FF6F00,
+    on-secondary: #ffffff,
+    secondary-container: #ffd9c2,
+    on-secondary-container: #3a1600,
+    secondary-fixed: #ffd9c2,
+    secondary-fixed-dim: #ffb37a,
+    on-secondary-fixed: #3a1600,
+    on-secondary-fixed-variant: #823500,
+
+    tertiary: #FF6F00,
+    on-tertiary: #ffffff,
+    tertiary-container: #ffd9c2,
+    on-tertiary-container: #3a1600,
+
+    background: #fdfcf7,
+    on-background: #1b1c18,
+    surface: #fdfcf7,
+    on-surface: #1b1c18,
+
+    outline: #839705,
+    neutral: #839705,
+    surface-variant: #e2e4cf,
+    on-surface-variant: #45483a,
   ));
 }
 
-// 4. Global styles
+/* 5. Optional Dark Theme */
+.dark {
+  @include mat.theme-overrides((
+    primary: #7fc760,
+    on-primary: #123800,
+    primary-container: #2a6909,
+    on-primary-container: #c7efb6,
+
+    secondary: #ffb37a,
+    on-secondary: #4a1f00,
+    secondary-container: #823500,
+    on-secondary-container: #ffd9c2,
+
+    tertiary: #ffb37a,
+    on-tertiary: #4a1f00,
+
+    background: #13140f,
+    on-background: #e5e6de,
+    surface: #13140f,
+    on-surface: #e5e6de,
+
+    outline: #8d916e,
+    neutral: #839705,
+  ));
+}
+
+/* 6. Global styles */
 html, body { height: 100%; }
+
 body { 
   margin: 0; 
   font-family: Roboto, "Helvetica Neue", sans-serif;
@@ -29,7 +84,7 @@ body {
   color: var(--mat-sys-on-surface);
 }
 
-// 5. Enterprise utility classes
+/* 7. Your utility classes */
 .container-enterprise {
   @apply max-w-7xl mx-auto px-4 sm:px-6 lg:px-8;
 }
