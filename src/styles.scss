@@ -1,90 +1,392 @@
-/* 1. Angular Material import FIRST */
-@use "@angular/material" as mat;
+/* 1. NG-ZORRO Theme Variables FIRST */
+:root {
+  /* Primary - Your Green (#48A111) */
+  --ant-primary-color: #48A111;
+  --ant-primary-color-hover: #5ac314;
+  --ant-primary-color-active: #3a800e;
+  --ant-primary-color-outline: rgba(72, 161, 17, 0.2);
+  
+  /* Success (using your green) */
+  --ant-success-color: #48A111;
+  --ant-success-color-hover: #5ac314;
+  --ant-success-color-active: #3a800e;
+  
+  /* Warning/Secondary - Your Orange (#FF6F00) */
+  --ant-warning-color: #FF6F00;
+  --ant-warning-color-hover: #ff8c33;
+  --ant-warning-color-active: #cc5900;
+  
+  /* Error */
+  --ant-error-color: #ff4d4f;
+  --ant-error-color-hover: #ff7875;
+  --ant-error-color-active: #d9363e;
+  
+  /* Info */
+  --ant-info-color: #1890ff;
+  --ant-info-color-hover: #40a9ff;
+  --ant-info-color-active: #096dd9;
+  
+  /* Text Colors */
+  --ant-text-color: #1b1c18;
+  --ant-text-color-secondary: #45483a;
+  --ant-text-color-disabled: rgba(0, 0, 0, 0.25);
+  
+  /* Background/Surface - Your Off-White (#fdfcf7) */
+  --ant-body-background: #fdfcf7;
+  --ant-component-background: #ffffff;
+  --ant-background-color-base: #f5f5f5;
+  
+  /* Border */
+  --ant-border-color-base: #839705;
+  --ant-border-color-split: #e2e4cf;
+  
+  /* Border Radius */
+  --ant-border-radius-base: 6px;
+  --ant-border-radius-sm: 4px;
+  
+  /* Font */
+  --ant-font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+  --ant-font-size-base: 14px;
+  --ant-line-height-base: 1.5715;
+  
+  /* Animation */
+  --ant-wave-animation-width: 6px;
+  --ant-animation-duration-slow: 0.3s;
+  --ant-animation-duration-base: 0.2s;
+  --ant-animation-duration-fast: 0.1s;
+  
+  /* Shadow */
+  --ant-box-shadow-base: 0 3px 6px -4px rgba(0, 0, 0, 0.12), 0 6px 16px 0 rgba(0, 0, 0, 0.08), 0 9px 28px 8px rgba(0, 0, 0, 0.05);
+  --ant-box-shadow-card: 0 1px 2px -2px rgba(0, 0, 0, 0.16), 0 3px 6px 0 rgba(0, 0, 0, 0.12), 0 5px 12px 4px rgba(0, 0, 0, 0.09);
+  
+  /* Height rules */
+  --ant-height-base: 32px;
+  --ant-height-lg: 40px;
+  --ant-height-sm: 24px;
+  
+  /* Disabled states */
+  --ant-disabled-color: rgba(0, 0, 0, 0.25);
+  --ant-disabled-bg: #f5f5f5;
+  --ant-disabled-color-dark: rgba(255, 255, 255, 0.35);
+  
+  /* Outline */
+  --ant-outline-blur-size: 0;
+  --ant-outline-width: 2px;
+  --ant-outline-color: var(--ant-primary-color);
+  --ant-outline-fade: 20%;
+  
+  /* Legacy compatibility for your existing CSS variables */
+  --mat-sys-surface: var(--ant-body-background);
+  --mat-sys-on-surface: var(--ant-text-color);
+  --mat-sys-primary: var(--ant-primary-color);
+  --mat-sys-on-primary: #ffffff;
+  --mat-sys-secondary: var(--ant-warning-color);
+  --mat-sys-on-secondary: #ffffff;
+}
 
-/* 2. Include Material core styles ONCE */
-@include mat.core();
-
-/* 3. Tailwind directives */
+/* 2. Tailwind directives */
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
-/* 4. Angular Material Theme Tokens (PASTE THEME HERE) */
-:root, :host {
-  @include mat.theme-overrides((
-    primary: #48A111,
-    on-primary: #ffffff,
-    primary-container: #c7efb6,
-    on-primary-container: #0e2b02,
-    inverse-primary: #7fc760,
-    primary-fixed: #c7efb6,
-    primary-fixed-dim: #7fc760,
-    on-primary-fixed: #0e2b02,
-    on-primary-fixed-variant: #2a6909,
+/* 3. NG-ZORRO Component Overrides with Your Theme */
 
-    secondary: #FF6F00,
-    on-secondary: #ffffff,
-    secondary-container: #ffd9c2,
-    on-secondary-container: #3a1600,
-    secondary-fixed: #ffd9c2,
-    secondary-fixed-dim: #ffb37a,
-    on-secondary-fixed: #3a1600,
-    on-secondary-fixed-variant: #823500,
-
-    tertiary: #FF6F00,
-    on-tertiary: #ffffff,
-    tertiary-container: #ffd9c2,
-    on-tertiary-container: #3a1600,
-
-    background: #fdfcf7,
-    on-background: #1b1c18,
-    surface: #fdfcf7,
-    on-surface: #1b1c18,
-
-    outline: #839705,
-    neutral: #839705,
-    surface-variant: #e2e4cf,
-    on-surface-variant: #45483a,
-  ));
+/* Buttons */
+.ant-btn-primary {
+  background: var(--ant-primary-color);
+  border-color: var(--ant-primary-color);
 }
 
-/* 5. Optional Dark Theme */
+.ant-btn-primary:hover,
+.ant-btn-primary:focus {
+  background: var(--ant-primary-color-hover);
+  border-color: var(--ant-primary-color-hover);
+}
+
+.ant-btn-primary:active {
+  background: var(--ant-primary-color-active);
+  border-color: var(--ant-primary-color-active);
+}
+
+/* Links */
+.ant-btn-link {
+  color: var(--ant-primary-color);
+}
+
+.ant-btn-link:hover {
+  color: var(--ant-primary-color-hover);
+}
+
+/* Input */
+.ant-input:hover,
+.ant-input:focus {
+  border-color: var(--ant-primary-color);
+}
+
+.ant-input:focus {
+  box-shadow: 0 0 0 2px var(--ant-primary-color-outline);
+}
+
+/* Select */
+.ant-select:not(.ant-select-disabled):hover .ant-select-selector {
+  border-color: var(--ant-primary-color);
+}
+
+.ant-select-focused:not(.ant-select-disabled).ant-select:not(.ant-select-customize-input) .ant-select-selector {
+  border-color: var(--ant-primary-color);
+  box-shadow: 0 0 0 2px var(--ant-primary-color-outline);
+}
+
+/* Checkbox */
+.ant-checkbox-checked .ant-checkbox-inner {
+  background-color: var(--ant-primary-color);
+  border-color: var(--ant-primary-color);
+}
+
+.ant-checkbox-checked::after {
+  border-color: var(--ant-primary-color);
+}
+
+.ant-checkbox-wrapper:hover .ant-checkbox-inner,
+.ant-checkbox:hover .ant-checkbox-inner,
+.ant-checkbox-input:focus + .ant-checkbox-inner {
+  border-color: var(--ant-primary-color);
+}
+
+/* Radio */
+.ant-radio-checked .ant-radio-inner {
+  border-color: var(--ant-primary-color);
+}
+
+.ant-radio-checked .ant-radio-inner::after {
+  background-color: var(--ant-primary-color);
+}
+
+.ant-radio-wrapper:hover .ant-radio,
+.ant-radio:hover .ant-radio-inner,
+.ant-radio-input:focus + .ant-radio-inner {
+  border-color: var(--ant-primary-color);
+}
+
+/* Switch */
+.ant-switch-checked {
+  background-color: var(--ant-primary-color);
+}
+
+/* Slider */
+.ant-slider-track {
+  background-color: var(--ant-primary-color);
+}
+
+.ant-slider-handle:focus {
+  box-shadow: 0 0 0 5px var(--ant-primary-color-outline);
+}
+
+.ant-slider:hover .ant-slider-track {
+  background-color: var(--ant-primary-color-hover);
+}
+
+/* Tabs */
+.ant-tabs-ink-bar {
+  background: var(--ant-primary-color);
+}
+
+.ant-tabs-tab.ant-tabs-tab-active .ant-tabs-tab-btn {
+  color: var(--ant-primary-color);
+}
+
+.ant-tabs-tab:hover {
+  color: var(--ant-primary-color-hover);
+}
+
+/* Menu */
+.ant-menu:not(.ant-menu-horizontal) .ant-menu-item-selected {
+  background-color: rgba(72, 161, 17, 0.1);
+  color: var(--ant-primary-color);
+}
+
+.ant-menu-item-selected,
+.ant-menu-item-selected a,
+.ant-menu-item-selected a:hover {
+  color: var(--ant-primary-color);
+}
+
+.ant-menu-item:hover,
+.ant-menu-item-active,
+.ant-menu:not(.ant-menu-inline) .ant-menu-submenu-open,
+.ant-menu-submenu-active,
+.ant-menu-submenu-title:hover {
+  color: var(--ant-primary-color);
+}
+
+/* Pagination */
+.ant-pagination-item-active {
+  border-color: var(--ant-primary-color);
+}
+
+.ant-pagination-item-active a {
+  color: var(--ant-primary-color);
+}
+
+.ant-pagination-item:focus-visible,
+.ant-pagination-item:hover {
+  border-color: var(--ant-primary-color-hover);
+}
+
+.ant-pagination-item:focus-visible a,
+.ant-pagination-item:hover a {
+  color: var(--ant-primary-color-hover);
+}
+
+/* Steps */
+.ant-steps-item-process > .ant-steps-item-container > .ant-steps-item-icon {
+  background: var(--ant-primary-color);
+  border-color: var(--ant-primary-color);
+}
+
+.ant-steps-item-finish > .ant-steps-item-container > .ant-steps-item-icon {
+  background-color: #fff;
+  border-color: var(--ant-primary-color);
+}
+
+.ant-steps-item-finish > .ant-steps-item-container > .ant-steps-item-icon .ant-steps-icon {
+  color: var(--ant-primary-color);
+}
+
+.ant-steps-item-finish > .ant-steps-item-container > .ant-steps-item-content > .ant-steps-item-title::after {
+  background-color: var(--ant-primary-color);
+}
+
+/* Date Picker */
+.ant-picker-focused {
+  border-color: var(--ant-primary-color);
+  box-shadow: 0 0 0 2px var(--ant-primary-color-outline);
+}
+
+.ant-picker-cell-in-view.ant-picker-cell-selected .ant-picker-cell-inner,
+.ant-picker-cell-in-view.ant-picker-cell-range-start .ant-picker-cell-inner,
+.ant-picker-cell-in-view.ant-picker-cell-range-end .ant-picker-cell-inner {
+  background: var(--ant-primary-color);
+}
+
+.ant-picker-cell-in-view.ant-picker-cell-today .ant-picker-cell-inner::before {
+  border-color: var(--ant-primary-color);
+}
+
+.ant-picker-today-btn {
+  color: var(--ant-primary-color);
+}
+
+.ant-picker-today-btn:hover {
+  color: var(--ant-primary-color-hover);
+}
+
+/* 4. Dark Theme */
 .dark {
-  @include mat.theme-overrides((
-    primary: #7fc760,
-    on-primary: #123800,
-    primary-container: #2a6909,
-    on-primary-container: #c7efb6,
-
-    secondary: #ffb37a,
-    on-secondary: #4a1f00,
-    secondary-container: #823500,
-    on-secondary-container: #ffd9c2,
-
-    tertiary: #ffb37a,
-    on-tertiary: #4a1f00,
-
-    background: #13140f,
-    on-background: #e5e6de,
-    surface: #13140f,
-    on-surface: #e5e6de,
-
-    outline: #8d916e,
-    neutral: #839705,
-  ));
+  --ant-primary-color: #7fc760;
+  --ant-primary-color-hover: #9dd480;
+  --ant-primary-color-active: #61a045;
+  --ant-primary-color-outline: rgba(127, 199, 96, 0.2);
+  
+  --ant-success-color: #7fc760;
+  --ant-warning-color: #ffb37a;
+  --ant-error-color: #ff7875;
+  --ant-info-color: #58a6ff;
+  
+  --ant-text-color: #e5e6de;
+  --ant-text-color-secondary: #8d916e;
+  --ant-text-color-disabled: rgba(255, 255, 255, 0.3);
+  
+  --ant-body-background: #13140f;
+  --ant-component-background: #1f2019;
+  --ant-background-color-base: #2a2b24;
+  
+  --ant-border-color-base: #8d916e;
+  --ant-border-color-split: #3a3d32;
+  
+  --ant-disabled-bg: rgba(255, 255, 255, 0.08);
+  --ant-disabled-color: rgba(255, 255, 255, 0.3);
+  
+  /* Legacy compatibility */
+  --mat-sys-surface: var(--ant-body-background);
+  --mat-sys-on-surface: var(--ant-text-color);
+  --mat-sys-primary: var(--ant-primary-color);
 }
 
-/* 6. Global styles */
-html, body { height: 100%; }
+.dark .ant-btn-primary {
+  background: var(--ant-primary-color);
+  border-color: var(--ant-primary-color);
+  color: #123800;
+}
+
+.dark .ant-btn-primary:hover,
+.dark .ant-btn-primary:focus {
+  background: var(--ant-primary-color-hover);
+  border-color: var(--ant-primary-color-hover);
+}
+
+.dark .ant-input,
+.dark .ant-select-selector,
+.dark .ant-picker {
+  background-color: var(--ant-component-background);
+  color: var(--ant-text-color);
+  border-color: var(--ant-border-color-base);
+}
+
+/* 5. Global styles */
+html, body { 
+  height: 100%; 
+}
 
 body { 
   margin: 0; 
-  font-family: Roboto, "Helvetica Neue", sans-serif;
-  background: var(--mat-sys-surface);
-  color: var(--mat-sys-on-surface);
+  font-family: var(--ant-font-family);
+  background: var(--ant-body-background);
+  color: var(--ant-text-color);
+  font-size: var(--ant-font-size-base);
+  line-height: var(--ant-line-height-base);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
 
-/* 7. Your utility classes */
+/* 6. Your utility classes */
 .container-enterprise {
   @apply max-w-7xl mx-auto px-4 sm:px-6 lg:px-8;
+}
+
+/* 7. NG-ZORRO specific utilities */
+.nz-animate-disabled {
+  animation: none !important;
+  transition: none !important;
+}
+
+/* Scrollbar styling to match theme */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--ant-background-color-base);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--ant-border-color-base);
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--ant-text-color-secondary);
+}
+
+/* Focus visible styles */
+:focus-visible {
+  outline: 2px solid var(--ant-primary-color);
+  outline-offset: 2px;
+}
+
+/* Selection color */
+::selection {
+  background: var(--ant-primary-color);
+  color: #fff;
 }
